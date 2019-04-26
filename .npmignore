@@ -1,0 +1,7 @@
+src/
+packages/
+plublic/
+
+vue.config.js
+babel.config.js
+*.map
