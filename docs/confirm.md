@@ -33,6 +33,15 @@ export default {
         
       });
     },
+    handleAlert1() {
+      this.$alert('打开提示框');
+    },
+    handleAlert2() {
+      this.$alert.success('打开提示框');
+    },
+    handleAlert3() {
+      this.$alert.error('打开提示框');
+    },
   },
 };
 </script>
@@ -47,7 +56,52 @@ export default {
 }
 </style>
 
-### 确认框(Confirm)
+## 提示框(Alert)
+替代系统提示，实现提示框功能
+
+#### 提示信息
+
+<template>
+  <div class="confirm" @click="handleAlert1">点击打开提示框</div>
+</template>
+
+``` html
+<template>
+  <div class="confirm" @click="handleAlert">点击打开提示框</div>
+</template>
+<script>
+export default {
+  handleAlert() {
+    this.$alert('打开提示框');
+  }, 
+}
+</script>
+```
+#### 带icon的提示信息
+
+<template>
+  <div class="confirm" @click="handleAlert2">点击打开成功提示框</div>
+  <div class="confirm" @click="handleAlert3">点击打开错误提示框</div>
+</template>
+
+``` html
+<template>
+  <div class="confirm" @click="handleSuccessAlert">点击打开成功提示框</div>
+  <div class="confirm" @click="handleErrorAlert">点击打开错误提示框</div>
+</template>
+<script>
+export default {
+    handleSuccessAlert() {
+      this.$alert.success('打开提示框');
+    },
+    handleErrorAlert() {
+      this.$alert.error('打开提示框');
+    },
+}
+</script>
+```
+
+## 确认框(Confirm)
 替代系统提示，实现确认框功能
 
 #### 消息提示
@@ -144,4 +198,4 @@ export default {
 -|-|-|-|-
 title|消息标题|string|-|提示信息
 message|消息内容|string|-|-|
-type|消息类型|string|success/error|success
+type|消息类型|string|success/error|-

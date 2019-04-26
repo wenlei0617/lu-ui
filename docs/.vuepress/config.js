@@ -7,7 +7,7 @@ module.exports = {
     ],
     sidebar: [
       ['/', '首页'],
-      ['/confirm', '确认框'],
+      ['/confirm', '消息框'],
     ]
   },
 }

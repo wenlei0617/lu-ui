@@ -1,7 +1,7 @@
 import Select from './select/index';
 import Loading from './loading/index';
 import Form from './form/index';
-import confirm from './confirm/index';
+import { confirm, alert } from './confirm/index';
 
 const components = [
   Select.Select,
@@ -12,6 +12,7 @@ const components = [
 
 const install = (Vue) => {
   Vue.prototype.$confirm = confirm;
+  Vue.prototype.$alert = alert;
 
   components.forEach((component) => {
     Vue.component(component.name, component);

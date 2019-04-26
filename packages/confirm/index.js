@@ -10,28 +10,56 @@ function defaultCallBack(action) {
   currentMsg.resolve(action);
 }
 
-const confirm = (data) => {
+function validateOpt(data) {
   if (typeof data !== 'string' && typeof data !== 'object') {
     throw new Error('参数错误,string|object');
   }
-  let opt;
+  let result;
   if (typeof data === 'string') {
-    opt = {
+    result = {
       message: data,
-      type: 'success',
+      type: '',
       title: '提示信息',
     }
-  } else {
-    const { message, type = 'success', title = '提示信息' } = data;
-    opt = {
-      message, type, title,
-    };
+    return result;
   }
+  const { message, type = 'success', title = '提示信息' } = data;
+  result = {
+    message, type, title,
+  };
+  return result;
+}
 
+function createAttr(attrs, func) {
+  attrs.forEach((type) => {
+    func[type] = (options) => {
+      if (typeof options !== 'string' && typeof options !== 'object') {
+        throw new Error('参数错误,string|object');
+      }
+      if (typeof options === 'string') {
+        return func({
+          message: options,
+          type,
+        });
+      }
+      return func({
+        ...options,
+        type,
+      });
+    };
+  });
+}
+
+const confirm = (data) => {
   Constructor.prototype.callback = defaultCallBack;
 
+  const opt = validateOpt(data);
+
   instance = new Constructor({
-    data: opt,
+    data: {
+      ...opt,
+      boxType: 'confirm',
+    },
   });
 
   const el = instance.$mount();
@@ -44,22 +72,25 @@ const confirm = (data) => {
   });
 };
 
-['success', 'error'].forEach((type) => {
-  confirm[type] = (options) => {
-    if (typeof options !== 'string' && typeof options !== 'object') {
-      throw new Error('参数错误,string|object');
-    }
-    if (typeof options === 'string') {
-      return confirm({
-        message: options,
-        type,
-      });
-    }
-    return confirm({
-      ...options,
-      type,
-    });
-  };
-});
+createAttr(['success', 'error'], confirm);
 
-export default confirm;
+const alert = (data) => {
+  const opt = validateOpt(data);
+  instance = new Constructor({
+    data: {
+      ...opt,
+      boxType: 'alert',
+    },
+  });
+
+  const el = instance.$mount();
+
+  document.body.appendChild(instance.$el);
+  el.visibled = true;
+}
+
+createAttr(['success', 'error'], alert);
+
+export {
+  confirm, alert,
+};

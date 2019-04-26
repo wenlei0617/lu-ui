@@ -9,6 +9,7 @@
         <p class="lu-confirm__message">{{message}}</p>
         <div class="lu-confirm__footer">
           <button 
+            v-if="boxType === 'confirm'"
             class="lu-confirm__btn lu-confirm__cancel"
             @click="handleCancel">取消</button>
           <button 
@@ -28,6 +29,7 @@ export default {
       message: '',
       type: '',
       title: '',
+      boxType: '',
     };
   },
   mounted() {
@@ -47,8 +49,12 @@ export default {
       this.removeSelf();
     },
     handleConfirm() {
+      if (this.boxType === 'confirm') {
         this.callback(true);
         this.removeSelf();
+      } else {
+        this.removeSelf();
+      }
     },
     removeSelf() {
       this.$el.parentNode.removeChild(this.$el);
