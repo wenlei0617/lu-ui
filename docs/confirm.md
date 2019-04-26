@@ -2,19 +2,35 @@
 export default {
   methods: {
     handleClick1() {
-      this.$confirm('我打开了确认框');
+      this.$confirm('我打开了确认框').then(() => {
+        
+      }).catch(() => {
+
+      });
     },
     handleClick2() {
-      this.$confirm.success('操作正确');
+      this.$confirm.success('操作正确').then(() => {
+
+      }).catch(() => {
+        
+      });
     },
     handleClick3() {
-      this.$confirm.error('操作错误');
+      this.$confirm.error('操作错误').then(() => {
+
+      }).catch(() => {
+        
+      });
     },
     handleClick4() {
       this.$confirm({
         type: 'success',
         message: '消息内容',
         title: '自定义消息',
+      }).then(() => {
+
+      }).catch(() => {
+        
       });
     },
   },
@@ -48,7 +64,11 @@ export default {
 export default {
   methods: {
     handleClick() {
-      this.$confirm('我打开了确认框');
+      this.$confirm('我打开了确认框').then(() => {
+        // 确定回调
+      }).catch(() => {
+        // 取消回调
+      });
     },
   },
 };
@@ -71,10 +91,18 @@ export default {
 export default {
   methods: {
     handleClickSuccess() {
-      this.$confirm.success('操作正确');
+      this.$confirm.success('操作正确').then(() => {
+        // 确定回调
+      }).catch(() => {
+        // 取消回调
+      });;
     },
     handleClickError() {
-      this.$confirm.error('操作错误');
+      this.$confirm.error('操作错误').then(() => {
+        // 确定回调
+      }).catch(() => {
+        // 取消回调
+      });
     },
   },
 };
@@ -99,6 +127,10 @@ export default {
         type: 'success',  // 可选参数 success | error
         message: '消息内容',
         title: '自定义消息', // 默认文言 提示信息
+      }).then(() => {
+        // 确定回调
+      }).catch(() => {
+        // 取消回调
       });
     },
   },

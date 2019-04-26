@@ -8,7 +8,12 @@
         </p>
         <p class="lu-confirm__message">{{message}}</p>
         <div class="lu-confirm__footer">
-          <button class="lu-confirm__confirm" @click="handleConfirm">确定</button>
+          <button 
+            class="lu-confirm__btn lu-confirm__cancel"
+            @click="handleCancel">取消</button>
+          <button 
+            class="lu-confirm__btn lu-confirm__confirm" 
+            @click="handleConfirm">确定</button>
         </div>
       </div>
     </transition>
@@ -35,6 +40,10 @@ export default {
   },
   methods: {
     handleHashChange() {
+      this.removeSelf();
+    },
+    handleCancel() {
+      this.callback();
       this.removeSelf();
     },
     handleConfirm() {
@@ -84,20 +93,31 @@ export default {
     font-size: 20px;
     margin-right: 10px;
   }
-  &__confirm{
+  &__btn{
     width: 58px;
     height: 28px;
     border-radius: 5px;
     box-sizing: border-box;
-    border: 1px solid #007AFF;
-    color: #007AFF;
     text-align: center;
     cursor: pointer;
-    background: #fff;
     outline: none;
     &:active{
       opacity: .5;
     }
+  }
+  &__cancel{
+    border: 1px solid #909399;
+    color: #000;
+    background: #fff;
+    &:hover{
+      background: #909399;
+      color: #fff;
+    }
+  }
+  &__confirm{
+    border: 1px solid #007AFF;
+    color: #007AFF;
+    background: #fff;
     &:hover{
       background: #007AFF;
       color: #fff;
