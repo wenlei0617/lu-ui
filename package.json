@@ -2,19 +2,16 @@
   "name": "lu-ui",
   "version": "0.0.1",
   "private": false,
-  "keywords": [
-    "vue",
-    "lu-ui"
-  ],
-  "author": "gary",
   "description": "基于Vue2.x的UI组件库",
+  "author": "gary",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name lu-ui --dest lib packages/index.js",
+    "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "lib": "vue-cli-service build --target lib --name lu-ui --dest lib packages/index.js",
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "vue": "^2.5.22",
@@ -24,9 +21,13 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",
     "@vue/cli-plugin-eslint": "^3.4.0",
+    "@vue/cli-plugin-unit-jest": "^3.6.3",
     "@vue/cli-service": "^3.4.0",
     "@vue/eslint-config-airbnb": "^4.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "less": "^3.0.4",
@@ -42,6 +43,10 @@
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
+  "keywords": [
+    "vue",
+    "lu-ui"
+  ],
   "lint-staged": {
     "*.js": [
       "vue-cli-service lint",

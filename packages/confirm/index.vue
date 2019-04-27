@@ -4,7 +4,7 @@
       <div class="lu-confirm__container" v-show="visibled">
         <p class="lu-confirm__title">
           <i class="lu-iconfont" :class="`lu-icon-${type}`"></i>
-          <span :class="`lu-confirm__text--${type}`">{{title}}</span>
+          <span :class="`${type ? `lu-confirm__text--${type}` : ''}`">{{title}}</span>
         </p>
         <p class="lu-confirm__message">{{message}}</p>
         <div class="lu-confirm__footer">

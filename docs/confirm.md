@@ -34,7 +34,10 @@ export default {
       });
     },
     handleAlert1() {
-      this.$alert('打开提示框');
+      this.$alert({
+        message: '打开提示框',
+        title: '提示信息2',
+      });
     },
     handleAlert2() {
       this.$alert.success('打开提示框');
@@ -191,6 +194,11 @@ export default {
 };
 </script>
 ```
+
+#### 全局方法
+$alert | $confirm
+* $alert(options) options[string|object]
+* $confirm(options) options[string|object]
 
 #### Options
 

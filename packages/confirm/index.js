@@ -50,7 +50,7 @@ function createAttr(attrs, func) {
   });
 }
 
-const confirm = (data) => {
+const Confirm = (data) => {
   Constructor.prototype.callback = defaultCallBack;
 
   const opt = validateOpt(data);
@@ -72,9 +72,9 @@ const confirm = (data) => {
   });
 };
 
-createAttr(['success', 'error'], confirm);
+createAttr(['success', 'error'], Confirm);
 
-const alert = (data) => {
+const Alert = (data) => {
   const opt = validateOpt(data);
   instance = new Constructor({
     data: {
@@ -89,8 +89,8 @@ const alert = (data) => {
   el.visibled = true;
 }
 
-createAttr(['success', 'error'], alert);
+createAttr(['success', 'error'], Alert);
 
 export {
-  confirm, alert,
+  Confirm, Alert,
 };
