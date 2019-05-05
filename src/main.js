@@ -1,7 +1,10 @@
+/* eslint-disable */
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import LuUI from '../packages/index';
+import '../packages/styles/index.less';
+import '../packages/styles/message-box.less';
 
 Vue.config.productionTip = false;
 Vue.use(LuUI);

@@ -1,8 +1,6 @@
 import { Confirm, Alert } from './message-box/index';
 
-const components = [
-
-];
+const components = [];
 
 const install = (Vue) => {
   Vue.prototype.$confirm = Confirm;

@@ -1,7 +1,6 @@
-import { Alert } from '../../packages/confirm';
+import { Alert } from '../../packages/message-box';
 
 describe('Alert', () => {
-
   afterEach(() => {
     const el = document.querySelector('.lu-confirm');
     if (!el) return;
@@ -18,16 +17,6 @@ describe('Alert', () => {
     setTimeout(() => {
       const el = document.querySelector('.lu-confirm__message');
       expect(el.textContent).toEqual('是否显示');
-      done();
-    }, 300);
-  });
-
-  it('是否可关闭', (done) => {
-    Alert('是否显示');
-    setTimeout(() => {
-      const el = document.querySelector('.lu-confirm__confirm');
-      el.click();
-      expect(document.querySelector('.lu-confirm')).toBeNull;
       done();
     }, 300);
   });
@@ -52,4 +41,23 @@ describe('Alert', () => {
       done();
     }, 300);
   });
-})
+
+  it('是否显示成功图标', (done) => {
+    Alert.success('成功');
+    setTimeout(() => {
+      const el = document.querySelector('.lu-confirm__text--success');
+      expect(el).not.toBeNull;
+      done();
+    }, 300);
+  });
+
+  it('是否可关闭', (done) => {
+    Alert('是否显示');
+    setTimeout(() => {
+      const el = document.querySelector('.lu-confirm__confirm');
+      el.click();
+      expect(document.querySelector('.lu-confirm')).toBeNull;
+      done();
+    }, 300);
+  });
+});

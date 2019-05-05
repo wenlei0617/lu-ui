@@ -20,7 +20,7 @@ function validateOpt(data) {
       message: data,
       type: '',
       title: '提示信息',
-    }
+    };
     return result;
   }
   const { message, type = 'success', title = '提示信息' } = data;
@@ -72,7 +72,7 @@ const Confirm = (data) => {
   });
 };
 
-createAttr(['success', 'error'], Confirm);
+createAttr(['success', 'error', 'warn'], Confirm);
 
 const Alert = (data) => {
   const opt = validateOpt(data);
@@ -87,9 +87,9 @@ const Alert = (data) => {
 
   document.body.appendChild(instance.$el);
   el.visibled = true;
-}
+};
 
-createAttr(['success', 'error'], Alert);
+createAttr(['success', 'error', 'warn'], Alert);
 
 export {
   Confirm, Alert,

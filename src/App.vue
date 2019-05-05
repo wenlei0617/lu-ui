@@ -1,19 +1,7 @@
 <template>
   <div id="app">
-    <lu-form ref="form" :data="data">
-      <div>
-        <lu-form-input 
-          :required="true"
-          v-model="data.test" 
-          :rules="{validator: /^.{1,2}$/, msg: '验证错误'}"/>
-      </div>
-      <ul>
-        <li>
-          <lu-form-input v-model="data.test1"/>
-        </li>
-      </ul>
-      <button @click.prevent="onSubmit">确定</button>
-    </lu-form>
+    <button @click="onSubmit">提示</button>
+    <button @click="onSubmit2">alert</button>
   </div>
 </template>
 <script>
@@ -28,11 +16,10 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$refs.form.validate().then(() => {
-        console.log('通过');
-      }).catch(() => {
-        console.log('未通过');
-      });
+      this.$confirm('123');
+    },
+    onSubmit2() {
+      this.$alert.warn('23');
     },
   },
 };
